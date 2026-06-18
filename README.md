@@ -48,7 +48,7 @@ sudo apt install qemu-user-static binfmt-support
 sudo systemctl enable --now docker
 ```
 
-**🪟 Windows 10/11**
+### 🪟 Windows 10/11
 Windows makes cross-compilation surprisingly easy thanks to WSL2 (Windows Subsystem for Linux).
 
 Install Git: Download and install Git for Windows.
@@ -59,10 +59,10 @@ Install Docker Desktop: Download and install Docker Desktop.
 
 Configure Docker: Open Docker Desktop, go to Settings > General, and ensure "Use the WSL 2 based engine" is checked. QEMU and cross-architecture support are built into Docker Desktop automatically!
 
-##🚀 Phase 2: Cloning the Repository
+## 🚀 Phase 2: Cloning the Repository
 Once your system is prepped, pull the codebase down to your local machine:
 
-Bash
+
 # Clone the repository
 git clone [https://github.com/YOUR-USERNAME/pi-flutter-django-server.git](https://github.com/YOUR-USERNAME/pi-flutter-django-server.git)
 
@@ -70,38 +70,43 @@ git clone [https://github.com/YOUR-USERNAME/pi-flutter-django-server.git](https:
 cd pi-flutter-django-server
 (Note: Replace YOUR-USERNAME with your actual GitHub username!)
 
-⚙️ Phase 3: Building and Running
+## ⚙️ Phase 3: Building and Running
 Before we spin up the server, we need to create a dedicated Docker builder that understands how to compile code for the Raspberry Pi (linux/arm64).
 
 1. Initialize the Multi-Arch Builder (All OS)
 Run this command once to set up your builder:
 
-Bash
+```
 docker buildx create --name pi-builder --use
 docker buildx inspect --bootstrap
+```
+
 Look for linux/arm64 in the output to confirm it worked!
 
 2. Build the Backend (Django)
 Navigate to the backend folder and compile the ARM64 image:
 
-Bash
+```
 cd backend
 docker buildx build --platform linux/arm64 -t pi-django-api:latest . --load
 cd ..
+```
 3. Build the Frontend (Flutter)
 (Prerequisite: You must have the Flutter SDK installed on your host machine to generate the static web files first. Run flutter build web inside the frontend/ directory before running this step).
 
 Navigate to the frontend folder and compile the ARM64 Nginx proxy:
 
-Bash
+```
 cd frontend
 docker buildx build --platform linux/arm64 -t pi-flutter-web:latest . --load
 cd ..
+```
 4. Ignite the Server
 With both images built and loaded, use Docker Compose from the root directory to link them together and start the server:
 
-Bash
+```
 docker-compose up
+```
 Boom! 💥 Your server is now alive.
 Open your browser and navigate to http://localhost. Nginx will serve you the Flutter app, and any calls to http://localhost/api/ will hit your Django backend.
 
