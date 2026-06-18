@@ -64,13 +64,17 @@ Once your system is prepped, pull the codebase down to your local machine:
 
 
 **Clone the repository**
-```git clone [https://github.com/YOUR-USERNAME/pi-flutter-django-server.git](https://github.com/YOUR-USERNAME/pi-flutter-django-server.git)```
+```
+
+git clone https://github.com/abdy-007/pi-flutter-django-server.git
+
+```
 
 **Enter the project directory**
 ```
 cd pi-flutter-django-server
+
 ```
-*(Note: Replace YOUR-USERNAME with your actual GitHub username!)*
 
 ## ⚙️ Phase 3: Building and Running
 Before we spin up the server, we need to create a dedicated Docker builder that understands how to compile code for the Raspberry Pi (linux/arm64).
