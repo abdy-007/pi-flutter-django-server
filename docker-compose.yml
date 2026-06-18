@@ -1,4 +1,3 @@
-cat << 'EOF' > docker-compose.yml
 version: '3.8'
 
 services:
@@ -17,7 +16,6 @@ services:
     ports:
       - "8000:8000" 
     environment:
-      - DEBUG=False
-      - ALLOWED_HOSTS=*
+      - "DEBUG=False"
+      - "ALLOWED_HOSTS=*"
     restart: unless-stopped
-EOF
