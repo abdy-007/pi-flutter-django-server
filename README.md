@@ -32,9 +32,11 @@ sudo systemctl restart systemd-binfmt
 
 # Start and enable the Docker daemon
 sudo systemctl enable --now docker
-For Ubuntu/Debian:
 
-Bash
+```
+**For Ubuntu/Debian:**
+
+```bash
 # Install Docker and Git
 sudo apt update
 sudo apt install git docker.io docker-buildx docker-compose
@@ -44,18 +46,20 @@ sudo apt install qemu-user-static binfmt-support
 
 # Start and enable the Docker daemon
 sudo systemctl enable --now docker
-🪟 Windows 10/11
+```
+
+**🪟 Windows 10/11**
 Windows makes cross-compilation surprisingly easy thanks to WSL2 (Windows Subsystem for Linux).
 
 Install Git: Download and install Git for Windows.
 
-Enable WSL2: Open PowerShell as Administrator and run: wsl --install. Restart your PC if prompted.
+Enable WSL2: Open PowerShell as Administrator and ```run: wsl --install```. Restart your PC if prompted.
 
 Install Docker Desktop: Download and install Docker Desktop.
 
 Configure Docker: Open Docker Desktop, go to Settings > General, and ensure "Use the WSL 2 based engine" is checked. QEMU and cross-architecture support are built into Docker Desktop automatically!
 
-🚀 Phase 2: Cloning the Repository
+##🚀 Phase 2: Cloning the Repository
 Once your system is prepped, pull the codebase down to your local machine:
 
 Bash
