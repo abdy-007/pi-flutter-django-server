@@ -49,6 +49,8 @@ sudo systemctl enable --now docker
 ```
 
 ### 🪟 Windows 10/11
+
+**NOT checked!!!, if any issues create an "issue" so I will start working on it. Youcouls also try to solve yourself with AI just don't forget to commit afterwards!!!**
 Windows makes cross-compilation surprisingly easy thanks to WSL2 (Windows Subsystem for Linux).
 
 Install Git: Download and install Git for Windows.
