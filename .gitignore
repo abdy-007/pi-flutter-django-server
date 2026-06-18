@@ -1,0 +1,29 @@
+cat << 'EOF' > .gitignore
+# --- Environment & Secrets ---
+.env
+db.sqlite3
+*.pem
+*.key
+
+# --- Python / Django ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.Python
+
+# --- Flutter / Dart ---
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+/build/
+/frontend/build/
+*.log
+
+# --- OS / Editor ---
+.DS_Store
+.vscode/
+.idea/
+EOF

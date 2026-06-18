@@ -1,0 +1,23 @@
+cat << 'EOF' > docker-compose.yml
+version: '3.8'
+
+services:
+  frontend:
+    image: pi-flutter-web:latest
+    container_name: flutter_nginx
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    image: pi-django-api:latest
+    container_name: django_gunicorn
+    ports:
+      - "8000:8000" 
+    environment:
+      - DEBUG=False
+      - ALLOWED_HOSTS=*
+    restart: unless-stopped
+EOF
