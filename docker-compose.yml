@@ -18,4 +18,9 @@ services:
     environment:
       - "DEBUG=False"
       - "ALLOWED_HOSTS=*"
+    volumes:
+      - sqlite_data:/app/data  # Mounts the persistent volume into the data directory
     restart: unless-stopped
+
+volumes:
+  sqlite_data:  # Defines the named volume managed by Docker
